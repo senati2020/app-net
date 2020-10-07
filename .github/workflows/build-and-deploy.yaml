@@ -16,15 +16,12 @@ jobs:
           dotnet-version: ${{ env.NETCORE_VERSION }}
       - name: Restore
         run: |
-          cd app-net
           dotnet restore
       - name: Build
         run: |
-          cd app-net
           dotnet build --no-restore
       - name: Publish
         run: |
-          cd app-net
           dotnet publish --configuration Release --output ${{ env.AZURE_WEBAPP_PACKAGE_NAME }}
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v2
